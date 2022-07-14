@@ -81,5 +81,17 @@ namespace GPBag
                 var events = e;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var source = (IList<BaggageGridModel>)dataGridView1.DataSource;
+            dataGridView1.DataSource = source.Where(t => t.Name.ToLower().Contains(txtBox_Search.Text.ToLower())).ToList();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            txtBox_Search.Text = "";
+            InitializeGrid();
+        }
     }
 }
