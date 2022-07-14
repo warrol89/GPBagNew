@@ -77,7 +77,7 @@ namespace GPBag
                 {
                     CSV_Read_Write<BaggageGridModel>.WriteDataToCSV(item);
                 }
-
+                InitializeGrid();
                 var events = e;
             }
         }

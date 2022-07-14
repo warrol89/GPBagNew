@@ -15,7 +15,7 @@ namespace GPBag.Models
         public DateTime? BaggageReceived { get; set; }
         public DateTime? BaggageReturned { get; set; }
         [Browsable(false)]
-        public int CalculatedHours
+        public double CalculatedHours
         {
             get
             {
@@ -24,10 +24,10 @@ namespace GPBag.Models
                 {
                     days = BaggageReturned.Value - BaggageReceived.Value;
                 }
-                return days.Hours;
+                return Math.Floor(days.TotalHours);
             }
         }
-        public int Price
+        public double Price
         {
             get
             {
