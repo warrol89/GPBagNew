@@ -85,7 +85,8 @@ namespace GPBag
             this.cmb_Size.Items.AddRange(new object[] {
             "Small",
             "Medium",
-            "Large"});
+            "Large",
+            "XLarge"});
             this.cmb_Size.Location = new System.Drawing.Point(526, 43);
             this.cmb_Size.Name = "cmb_Size";
             this.cmb_Size.Size = new System.Drawing.Size(242, 40);
