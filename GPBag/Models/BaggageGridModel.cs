@@ -2,20 +2,35 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
+using System.Linq;
 
 namespace GPBag.Models
 {
     public class BaggageGridModel
     {
+        private static readonly List<StorageRate> rate;
+
+        static BaggageGridModel()
+        {
+            rate = new List<StorageRate>();
+            rate.Add(new StorageRate { Size = "Small", Rate_1Day = 10, Rate_2_14Day = 8, Rate_15_30Day = 6 });
+            rate.Add(new StorageRate { Size = "Medium", Rate_1Day = 20, Rate_2_14Day = 16, Rate_15_30Day = 14 });
+            rate.Add(new StorageRate { Size = "Large", Rate_1Day = 30, Rate_2_14Day = 26, Rate_15_30Day = 24 });
+            rate.Add(new StorageRate { Size = "XLarge", Rate_1Day = 50, Rate_2_14Day = 45, Rate_15_30Day = 40 });
+        }
+
+
+
         public string Name { get; set; }
         public string RackNo { get; set; }
         public string Bagsize { get; set; }
         public int NoOfBoxes { get; set; }
+        [Browsable(false)]
         public string RoomNo { get; set; }
         public DateTime? BaggageReceived { get; set; }
         public DateTime? BaggageReturned { get; set; }
         [Browsable(false)]
-        public double CalculatedHours
+        public double CalculatedDays
         {
             get
             {
@@ -24,37 +39,39 @@ namespace GPBag.Models
                 {
                     days = BaggageReturned.Value - BaggageReceived.Value;
                 }
-                return Math.Floor(days.TotalHours);
+                return Math.Floor(days.TotalDays);
             }
         }
         public double Price
         {
             get
             {
-                var value = 0;
-                if (this.CalculatedHours == 0) { return 0; }
-                var calculatedDays = (CalculatedHours / 24);
+                double value = 0;
+                if (this.CalculatedDays == 0) { return 0; }
 
-                switch (this.Bagsize.ToLower())
-                {
-                    case "small":
-                        value = NoOfBoxes * 10;
-                        break;
-                    case "medium":
-                        value = NoOfBoxes * 20;
-                        break;
-                    case "large":
-                        value = NoOfBoxes * 30;
-                        break;
-                    case "xlarge":
-                        value = NoOfBoxes * 50;
-                        break;
-                    default:
-                        value = NoOfBoxes * 0;
-                        break;
-                }
-                return value * calculatedDays;
+
+                value = this.CalculateValue(rate.Where(t => t.Size.ToLower() == this.Bagsize.ToLower()).FirstOrDefault(), CalculatedDays);
+
+                return value * NoOfBoxes;
             }
+        }
+
+        private  double CalculateValue(StorageRate rateDetails, double days)
+        {
+            if (days < 2)
+            {
+                return rateDetails.Rate_1Day * days;
+            }
+            if (days >= 2 && days <= 14)
+            {
+                return rateDetails.Rate_2_14Day * days;
+            }
+            if (days >= 15 && days <= 30)
+            {
+                return rateDetails.Rate_15_30Day * days;
+            }
+            return 0;
+
         }
     }
 
@@ -67,6 +84,14 @@ namespace GPBag.Models
         Large,
         XLarge
 
+    }
+
+    public class StorageRate
+    {
+        public string Size { get; set; }
+        public int Rate_1Day { get; set; }
+        public int Rate_2_14Day { get; set; }
+        public int Rate_15_30Day { get; set; }
     }
 }
 
