@@ -32,15 +32,6 @@ namespace GPBag.Models
                 return value * NoOfBoxes;
             }
         }
-        public string Name { get; set; }
-        public string RackNo { get; set; }
-        public string Bagsize { get; set; }
-        public int NoOfBoxes { get; set; }
-        [Browsable(false)]
-        public string RoomNo { get; set; }
-        public DateTime? BaggageReceived { get; set; }
-        public DateTime? BaggageReturned { get; set; }
-        [Browsable(false)]
         public double CalculatedDays
         {
             get
@@ -53,14 +44,22 @@ namespace GPBag.Models
                 return Math.Floor(days.TotalDays);
             }
         }
+        public string Name { get; set; }
+        public string RackNo { get; set; }
+        public string Bagsize { get; set; }
+        public int NoOfBoxes { get; set; }
+        [Browsable(false)]
+        public string RoomNo { get; set; }
+        public DateTime? BaggageReceived { get; set; }
+        public DateTime? BaggageReturned { get; set; }
 
         private  double CalculateValue(StorageRate rateDetails, double days)
         {
-            if (days < 2)
+            if (days >=1 && days <=7)
             {
                 return rateDetails.Rate_1Day * days;
             }
-            if (days >= 2 && days <= 14)
+            if (days >= 8 && days <= 14)
             {
                 return rateDetails.Rate_2_14Day * days;
             }

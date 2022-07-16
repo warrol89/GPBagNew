@@ -39,7 +39,7 @@ namespace GPBag.Utility
             };
            if(!File.Exists(csvPath))
             {
-                File.Create(csvPath);
+                File.Create(csvPath).Close();
             }
 
             using (var stream = File.Open(fileName, FileMode.Open))

@@ -28,7 +28,16 @@ namespace GPBag
         }
         private void InitializeGrid()
         {
+        
             dataGridView1.DataSource = CSV_Read_Write<BaggageGridModel>.ReadDataFromCSV();
+
+            decimal width = dataGridView1.Width / dataGridView1.ColumnCount;
+            var columns = dataGridView1.ColumnCount;
+            for (var i = 0; i < columns; i++)
+            {
+                dataGridView1.Columns[i].Width = (int)Math.Floor(width);
+            }
+
             dataGridView1.Columns["Bagsize"].ReadOnly = true;
             dataGridView1.Columns["BaggageReceived"].ReadOnly = true;
             dataGridView1.Columns["BaggageReturned"].ReadOnly = true;
@@ -102,7 +111,14 @@ namespace GPBag
 
         private void Form_Load(object sender, EventArgs e)
         {
-
+           if(!File.Exists("bagdata.csv"))
+            {
+                File.Create("bagadata.csv");
+            }
+            if (!File.Exists("checkout.csv"))
+            {
+                File.Create("checkout.csv");
+            }
         }
 
         private void Checkout_Click(object sender, EventArgs e)
@@ -120,7 +136,7 @@ namespace GPBag
             File.Delete("bagdata.csv");
 
             foreach(var item in (List<BaggageGridModel>)dataGridView1.DataSource)
-            {
+            { 
                 CSV_Read_Write<BaggageGridModel>.WriteDataToCSV(item);
             }
 
