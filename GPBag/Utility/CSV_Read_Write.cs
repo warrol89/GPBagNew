@@ -13,12 +13,12 @@ namespace GPBag.Utility
     public class CSV_Read_Write<T>
     {
         private const string csvPath = "bagdata.csv";
-        public static void WriteDataToCSV(BaggageGridModel model)
+        public static void WriteDataToCSV(BaggageGridModel model, string fileName = "bagdata.csv" )
         {
 
 
             //using (var stream = File.Open("bagdata.csv", FileMode.Append))
-            using (var writer = new StreamWriter(csvPath, true))
+            using (var writer = new StreamWriter(fileName, true))
             {
                
 
@@ -31,7 +31,7 @@ namespace GPBag.Utility
            
         }
 
-        public static List<T> ReadDataFromCSV()
+        public static List<T> ReadDataFromCSV(string fileName = "bagdata.csv")
         {
             var configPersons = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
@@ -42,7 +42,7 @@ namespace GPBag.Utility
                 File.Create(csvPath);
             }
 
-            using (var stream = File.Open(csvPath, FileMode.Open))
+            using (var stream = File.Open(fileName, FileMode.Open))
             using (var reader = new StreamReader(stream))
             using (var csv = new CsvReader(reader, configPersons))
             {

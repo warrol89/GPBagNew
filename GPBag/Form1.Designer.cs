@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace GPBag
 {
     partial class Form
@@ -39,45 +41,51 @@ namespace GPBag
             this.txt_No = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ReturnBaggage = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.PaidByCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Add = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.txtBox_Search = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.Checkout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_Name
             // 
             this.txt_Name.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Name.Location = new System.Drawing.Point(74, 46);
+            this.txt_Name.Location = new System.Drawing.Point(40, 22);
+            this.txt_Name.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txt_Name.Name = "txt_Name";
-            this.txt_Name.Size = new System.Drawing.Size(213, 35);
+            this.txt_Name.Size = new System.Drawing.Size(117, 21);
             this.txt_Name.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 5);
+            this.label1.Location = new System.Drawing.Point(40, 2);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 32);
+            this.label1.Size = new System.Drawing.Size(39, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Name";
             // 
             // txt_PhNo
             // 
-            this.txt_PhNo.Location = new System.Drawing.Point(304, 44);
+            this.txt_PhNo.Location = new System.Drawing.Point(164, 21);
+            this.txt_PhNo.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txt_PhNo.Name = "txt_PhNo";
-            this.txt_PhNo.Size = new System.Drawing.Size(200, 39);
+            this.txt_PhNo.Size = new System.Drawing.Size(110, 23);
             this.txt_PhNo.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(304, 9);
+            this.label2.Location = new System.Drawing.Point(164, 4);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 32);
+            this.label2.Size = new System.Drawing.Size(51, 15);
             this.label2.TabIndex = 3;
             this.label2.Text = "Rack No";
             // 
@@ -90,46 +98,53 @@ namespace GPBag
             "Medium",
             "Large",
             "XLarge"});
-            this.cmb_Size.Location = new System.Drawing.Point(526, 43);
+            this.cmb_Size.Location = new System.Drawing.Point(283, 20);
+            this.cmb_Size.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.cmb_Size.Name = "cmb_Size";
-            this.cmb_Size.Size = new System.Drawing.Size(242, 40);
+            this.cmb_Size.Size = new System.Drawing.Size(132, 23);
             this.cmb_Size.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(526, 9);
+            this.label3.Location = new System.Drawing.Point(283, 4);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 32);
+            this.label3.Size = new System.Drawing.Size(27, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "Size";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(795, 9);
+            this.label4.Location = new System.Drawing.Point(428, 4);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(148, 32);
+            this.label4.Size = new System.Drawing.Size(73, 15);
             this.label4.TabIndex = 6;
             this.label4.Text = "No Of Boxes";
             // 
             // txt_No
             // 
-            this.txt_No.Location = new System.Drawing.Point(795, 47);
+            this.txt_No.Location = new System.Drawing.Point(428, 22);
+            this.txt_No.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txt_No.Name = "txt_No";
-            this.txt_No.Size = new System.Drawing.Size(200, 39);
+            this.txt_No.Size = new System.Drawing.Size(110, 23);
             this.txt_No.TabIndex = 7;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ReturnBaggage});
-            this.dataGridView1.Location = new System.Drawing.Point(74, 190);
+            this.ReturnBaggage,
+            this.PaidByCustomer});
+            this.dataGridView1.Location = new System.Drawing.Point(40, 130);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 82;
             this.dataGridView1.RowTemplate.Height = 41;
-            this.dataGridView1.Size = new System.Drawing.Size(1800, 900);
+            this.dataGridView1.Size = new System.Drawing.Size(1600, 600);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -141,13 +156,20 @@ namespace GPBag
             this.ReturnBaggage.Name = "ReturnBaggage";
             this.ReturnBaggage.Text = "Return";
             this.ReturnBaggage.UseColumnTextForButtonValue = true;
-            this.ReturnBaggage.Width = 200;
+            this.ReturnBaggage.Width = 87;
+            // 
+            // PaidByCustomer
+            // 
+            this.PaidByCustomer.HeaderText = "Paid By Customer";
+            this.PaidByCustomer.Name = "PaidByCustomer";
+            this.PaidByCustomer.Width = 115;
             // 
             // Add
             // 
-            this.Add.Location = new System.Drawing.Point(1476, 47);
+            this.Add.Location = new System.Drawing.Point(795, 22);
+            this.Add.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(150, 46);
+            this.Add.Size = new System.Drawing.Size(81, 22);
             this.Add.TabIndex = 9;
             this.Add.Text = "Add";
             this.Add.UseVisualStyleBackColor = true;
@@ -155,32 +177,36 @@ namespace GPBag
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(1024, 47);
+            this.dateTimePicker1.Location = new System.Drawing.Point(551, 22);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(400, 39);
+            this.dateTimePicker1.Size = new System.Drawing.Size(217, 23);
             this.dateTimePicker1.TabIndex = 10;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1024, 9);
+            this.label5.Location = new System.Drawing.Point(551, 4);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(166, 32);
+            this.label5.Size = new System.Drawing.Size(81, 15);
             this.label5.TabIndex = 11;
             this.label5.Text = "Received Date";
             // 
             // txtBox_Search
             // 
-            this.txtBox_Search.Location = new System.Drawing.Point(74, 131);
+            this.txtBox_Search.Location = new System.Drawing.Point(40, 61);
+            this.txtBox_Search.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtBox_Search.Name = "txtBox_Search";
-            this.txtBox_Search.Size = new System.Drawing.Size(557, 39);
+            this.txtBox_Search.Size = new System.Drawing.Size(302, 23);
             this.txtBox_Search.TabIndex = 12;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(711, 123);
+            this.button1.Location = new System.Drawing.Point(383, 58);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 46);
+            this.button1.Size = new System.Drawing.Size(81, 22);
             this.button1.TabIndex = 13;
             this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
@@ -188,19 +214,31 @@ namespace GPBag
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(910, 124);
+            this.button2.Location = new System.Drawing.Point(490, 58);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 46);
+            this.button2.Size = new System.Drawing.Size(81, 22);
             this.button2.TabIndex = 14;
             this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // Checkout
+            // 
+            this.Checkout.Location = new System.Drawing.Point(428, 750);
+            this.Checkout.Name = "Checkout";
+            this.Checkout.Size = new System.Drawing.Size(218, 23);
+            this.Checkout.TabIndex = 15;
+            this.Checkout.Text = "Checkout";
+            this.Checkout.UseVisualStyleBackColor = true;
+            this.Checkout.Click += new System.EventHandler(this.Checkout_Click);
+            // 
             // Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2474, 1129);
+            this.ClientSize = new System.Drawing.Size(1120, 932);
+            this.Controls.Add(this.Checkout);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtBox_Search);
@@ -216,8 +254,11 @@ namespace GPBag
             this.Controls.Add(this.txt_PhNo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_Name);
+            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "Form";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -238,10 +279,12 @@ namespace GPBag
         private System.Windows.Forms.Button Add;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridViewButtonColumn ReturnBaggage;
         private System.Windows.Forms.TextBox txtBox_Search;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewButtonColumn ReturnBaggage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PaidByCustomer;
+        private Button Checkout;
     }
 }
 

@@ -18,9 +18,20 @@ namespace GPBag.Models
             rate.Add(new StorageRate { Size = "Large", Rate_1Day = 30, Rate_2_14Day = 26, Rate_15_30Day = 24 });
             rate.Add(new StorageRate { Size = "XLarge", Rate_1Day = 50, Rate_2_14Day = 45, Rate_15_30Day = 40 });
         }
+        public int Id { get; set; }
+        public double Price
+        {
+            get
+            {
+                double value = 0;
+                if (this.CalculatedDays == 0) { return 0; }
 
 
+                value = this.CalculateValue(rate.Where(t => t.Size.ToLower() == this.Bagsize.ToLower()).FirstOrDefault(), CalculatedDays);
 
+                return value * NoOfBoxes;
+            }
+        }
         public string Name { get; set; }
         public string RackNo { get; set; }
         public string Bagsize { get; set; }
@@ -42,19 +53,6 @@ namespace GPBag.Models
                 return Math.Floor(days.TotalDays);
             }
         }
-        public double Price
-        {
-            get
-            {
-                double value = 0;
-                if (this.CalculatedDays == 0) { return 0; }
-
-
-                value = this.CalculateValue(rate.Where(t => t.Size.ToLower() == this.Bagsize.ToLower()).FirstOrDefault(), CalculatedDays);
-
-                return value * NoOfBoxes;
-            }
-        }
 
         private  double CalculateValue(StorageRate rateDetails, double days)
         {
@@ -66,7 +64,7 @@ namespace GPBag.Models
             {
                 return rateDetails.Rate_2_14Day * days;
             }
-            if (days >= 15 && days <= 30)
+            if (days >= 15)
             {
                 return rateDetails.Rate_15_30Day * days;
             }
