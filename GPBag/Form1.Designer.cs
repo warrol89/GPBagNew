@@ -31,6 +31,8 @@ namespace GPBag
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form));
             this.txt_Name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_PhNo = new System.Windows.Forms.TextBox();
@@ -49,217 +51,282 @@ namespace GPBag
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.Checkout = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txt_Type = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.parentclock = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // txt_Name
             // 
-            this.txt_Name.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Name.Location = new System.Drawing.Point(40, 22);
-            this.txt_Name.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            resources.ApplyResources(this.txt_Name, "txt_Name");
             this.txt_Name.Name = "txt_Name";
-            this.txt_Name.Size = new System.Drawing.Size(117, 21);
-            this.txt_Name.TabIndex = 0;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 2);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Name";
             // 
             // txt_PhNo
             // 
-            this.txt_PhNo.Location = new System.Drawing.Point(164, 21);
-            this.txt_PhNo.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            resources.ApplyResources(this.txt_PhNo, "txt_PhNo");
             this.txt_PhNo.Name = "txt_PhNo";
-            this.txt_PhNo.Size = new System.Drawing.Size(110, 23);
-            this.txt_PhNo.TabIndex = 2;
+            this.txt_PhNo.TextChanged += new System.EventHandler(this.txt_PhNo_TextChanged);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(164, 4);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Rack No";
             // 
             // cmb_Size
             // 
             this.cmb_Size.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_Size.FormattingEnabled = true;
             this.cmb_Size.Items.AddRange(new object[] {
-            "Small",
-            "Medium",
-            "Large",
-            "XLarge"});
-            this.cmb_Size.Location = new System.Drawing.Point(283, 20);
-            this.cmb_Size.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            resources.GetString("cmb_Size.Items"),
+            resources.GetString("cmb_Size.Items1"),
+            resources.GetString("cmb_Size.Items2"),
+            resources.GetString("cmb_Size.Items3")});
+            resources.ApplyResources(this.cmb_Size, "cmb_Size");
             this.cmb_Size.Name = "cmb_Size";
-            this.cmb_Size.Size = new System.Drawing.Size(132, 23);
-            this.cmb_Size.TabIndex = 4;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(283, 4);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 15);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Size";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(428, 4);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 15);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "No Of Boxes";
             // 
             // txt_No
             // 
-            this.txt_No.Location = new System.Drawing.Point(428, 22);
-            this.txt_No.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            resources.ApplyResources(this.txt_No, "txt_No");
             this.txt_No.Name = "txt_No";
-            this.txt_No.Size = new System.Drawing.Size(110, 23);
-            this.txt_No.TabIndex = 7;
             // 
             // dataGridView1
             // 
-            //this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-           // this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ReturnBaggage,
             this.PaidByCustomer});
-            this.dataGridView1.Location = new System.Drawing.Point(40, 130);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 82;
             this.dataGridView1.RowTemplate.Height = 41;
-            this.dataGridView1.Size = new System.Drawing.Size(1600, 600);
-            this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // ReturnBaggage
             // 
             this.ReturnBaggage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ReturnBaggage.HeaderText = "Return Baggage";
-            this.ReturnBaggage.MinimumWidth = 10;
+            resources.ApplyResources(this.ReturnBaggage, "ReturnBaggage");
             this.ReturnBaggage.Name = "ReturnBaggage";
             this.ReturnBaggage.Text = "Return";
             this.ReturnBaggage.UseColumnTextForButtonValue = true;
-            this.ReturnBaggage.Width = 87;
             // 
             // PaidByCustomer
             // 
-            this.PaidByCustomer.HeaderText = "Paid By Customer";
+            resources.ApplyResources(this.PaidByCustomer, "PaidByCustomer");
             this.PaidByCustomer.Name = "PaidByCustomer";
-            this.PaidByCustomer.Width = 115;
             // 
             // Add
             // 
-            this.Add.Location = new System.Drawing.Point(795, 22);
-            this.Add.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.Add.ForeColor = System.Drawing.Color.Green;
+            resources.ApplyResources(this.Add, "Add");
             this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(81, 22);
-            this.Add.TabIndex = 9;
-            this.Add.Text = "Add";
             this.Add.UseVisualStyleBackColor = true;
             this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(551, 22);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            resources.ApplyResources(this.dateTimePicker1, "dateTimePicker1");
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(217, 23);
-            this.dateTimePicker1.TabIndex = 10;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(551, 4);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 15);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Received Date";
             // 
             // txtBox_Search
             // 
-            this.txtBox_Search.Location = new System.Drawing.Point(40, 61);
-            this.txtBox_Search.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            resources.ApplyResources(this.txtBox_Search, "txtBox_Search");
             this.txtBox_Search.Name = "txtBox_Search";
-            this.txtBox_Search.Size = new System.Drawing.Size(302, 23);
-            this.txtBox_Search.TabIndex = 12;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(383, 58);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.button1.ForeColor = System.Drawing.Color.Green;
+            resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 22);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(490, 58);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.button2.ForeColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.button2, "button2");
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 22);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Checkout
             // 
-            this.Checkout.Location = new System.Drawing.Point(428, 750);
+            this.Checkout.BackColor = System.Drawing.SystemColors.ButtonFace;
+            resources.ApplyResources(this.Checkout, "Checkout");
+            this.Checkout.ForeColor = System.Drawing.Color.Green;
             this.Checkout.Name = "Checkout";
-            this.Checkout.Size = new System.Drawing.Size(218, 23);
-            this.Checkout.TabIndex = 15;
-            this.Checkout.Text = "Checkout";
-            this.Checkout.UseVisualStyleBackColor = true;
+            this.Checkout.UseVisualStyleBackColor = false;
             this.Checkout.Click += new System.EventHandler(this.Checkout_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txt_Type);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txt_PhNo);
+            this.groupBox1.Controls.Add(this.txt_Name);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.Add);
+            this.groupBox1.Controls.Add(this.cmb_Size);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txt_No);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // txt_Type
+            // 
+            resources.ApplyResources(this.txt_Type, "txt_Type");
+            this.txt_Type.Name = "txt_Type";
+            this.txt_Type.TextChanged += new System.EventHandler(this.txt_Type_TextChanged);
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.txtBox_Search);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.button2);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dataGridView1);
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.button4);
+            this.groupBox4.Controls.Add(this.button3);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            // 
+            // button4
+            // 
+            resources.ApplyResources(this.button4, "button4");
+            this.button4.ForeColor = System.Drawing.Color.Green;
+            this.button4.Name = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.ForeColor = System.Drawing.Color.Red;
+            this.button3.Name = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.SystemColors.ButtonFace;
+            resources.ApplyResources(this.button5, "button5");
+            this.button5.ForeColor = System.Drawing.Color.Red;
+            this.button5.Name = "button5";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // parentclock
+            // 
+            resources.ApplyResources(this.parentclock, "parentclock");
+            this.parentclock.BackColor = System.Drawing.SystemColors.Desktop;
+            this.parentclock.ForeColor = System.Drawing.Color.Yellow;
+            this.parentclock.Name = "parentclock";
+            this.parentclock.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // button6
+            // 
+            resources.ApplyResources(this.button6, "button6");
+            this.button6.Name = "button6";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            resources.ApplyResources(this.button7, "button7");
+            this.button7.Name = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1120, 932);
+            resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.Checkout);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.txtBox_Search);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.Add);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.txt_No);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.cmb_Size);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txt_PhNo);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txt_Name);
-            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.Controls.Add(this.parentclock);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Name = "Form";
-            this.Text = "Form1";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,6 +352,20 @@ namespace GPBag
         private System.Windows.Forms.DataGridViewButtonColumn ReturnBaggage;
         private System.Windows.Forms.DataGridViewTextBoxColumn PaidByCustomer;
         private Button Checkout;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private Label label6;
+        private GroupBox groupBox3;
+        private GroupBox groupBox4;
+        private Button button4;
+        private Button button3;
+        private Button button5;
+        private Label parentclock;
+        private Timer timer1;
+        private Button button6;
+        private Button button7;
+        private TextBox txt_Type;
+        private Label label7;
     }
 }
 

@@ -46,6 +46,7 @@ namespace GPBag.Models
         }
         public string Name { get; set; }
         public string RackNo { get; set; }
+        public string Bagtype { get; set; }
         public string Bagsize { get; set; }
         public int NoOfBoxes { get; set; }
         [Browsable(false)]
