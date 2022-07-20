@@ -4,7 +4,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Linq;
 
-namespace GPBag.Models
+namespace GPBagRepository
 {
     public class BaggageGridModel
     {
@@ -84,12 +84,6 @@ namespace GPBag.Models
 
     }
 
-    public class StorageRate
-    {
-        public string Size { get; set; }
-        public int Rate_1Day { get; set; }
-        public int Rate_2_14Day { get; set; }
-        public int Rate_15_30Day { get; set; }
-    }
+   
 }
 
