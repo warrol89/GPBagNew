@@ -7,6 +7,7 @@ using System.IO;
 using System.Globalization;
 using CsvHelper.Configuration;
 using System.Linq;
+using GPBag.Data.Models;
 
 namespace GPBag.Utility
 {

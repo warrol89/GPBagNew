@@ -10,13 +10,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using GPBag.Data.Models;
+using GpBag.Service;
 
 namespace GPBag
 {
     public partial class Form : System.Windows.Forms.Form
     {
+        public readonly GpGridService _gridService;
         public Form()
         {
+            _gridService = new GpGridService();
             InitializeComponent();
             InitializeGrid();
         }
@@ -28,22 +32,22 @@ namespace GPBag
         }
         private void InitializeGrid()
         {
-        
-            dataGridView1.DataSource = CSV_Read_Write<BaggageGridModel>.ReadDataFromCSV();
-
-            decimal width = dataGridView1.Width / dataGridView1.ColumnCount;
-            var columns = dataGridView1.ColumnCount;
+            var baggaageDetails = _gridService.GetBaggageDetails();
+            dataGridView.DataSource = baggaageDetails;
+            dataGridView.ColumnHeadersHeight = 50;
+            decimal width = dataGridView.Width / dataGridView.ColumnCount;
+            var columns = dataGridView.ColumnCount;
             for (var i = 0; i < columns; i++)
             {
-                dataGridView1.Columns[i].Width = (int)Math.Floor(width);
+                dataGridView.Columns[i].Width = (int)Math.Floor(width);
             }
 
-            dataGridView1.Columns["Bagsize"].ReadOnly = true;
-            dataGridView1.Columns["BaggageReceived"].ReadOnly = true;
-            dataGridView1.Columns["BaggageReturned"].ReadOnly = true;
-            dataGridView1.Columns["Price"].ReadOnly = true;
-            dataGridView1.Columns["Price"].HeaderText = "Price to be paid";
-            dataGridView1.Columns["Id"].Visible = false;
+            dataGridView.Columns["Bagsize"].ReadOnly = true;
+            dataGridView.Columns["BaggageReceived"].ReadOnly = true;
+            dataGridView.Columns["BaggageReturned"].ReadOnly = true;
+            dataGridView.Columns["Price"].ReadOnly = true;
+            dataGridView.Columns["Price"].HeaderText = "Price to be paid";
+            dataGridView.Columns["Id"].Visible = false;
         }
 
         private void Add_Click(object sender, EventArgs e)
@@ -55,53 +59,43 @@ namespace GPBag
                 Bagtype = txt_Type.Text,
                 NoOfBoxes = Convert.ToInt32(txt_No.Text),
                 RackNo = txt_PhNo.Text,
-                BaggageReceived = dateTimePicker1.Value,
-                Id = dataGridView1.RowCount + 1
+                BaggageReceived = dateTimePicker1.Value
             };
+            _gridService.AddBaggageDetails(valueToBeAdded);
+            var values = _gridService.GetBaggageDetails();
 
-            CSV_Read_Write<BaggageGridModel>.WriteDataToCSV(valueToBeAdded);
-            var values = CSV_Read_Write<BaggageGridModel>.ReadDataFromCSV();
-
-            dataGridView1.DataSource = values;
+            dataGridView.DataSource = values;
 
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+         {
             var senderGrid = (DataGridView)sender;
             var clickedColumn = senderGrid.Columns[e.ColumnIndex];
 
             if (clickedColumn is DataGridViewButtonColumn &&
                 e.RowIndex >= 0 && e.ColumnIndex == 0)
             {
-                var values = CSV_Read_Write<BaggageGridModel>.ReadDataFromCSV();
-                var send = sender;
-                BaggageGridModel rows = (BaggageGridModel)((DataGridView)send).Rows[e.RowIndex].DataBoundItem;
-
-                var csvValues = CSV_Read_Write<BaggageGridModel>.ReadDataFromCSV();
+              
+                BaggageGridModel rows = (BaggageGridModel)((DataGridView)sender).Rows[e.RowIndex].DataBoundItem;
 
                 if (rows.BaggageReturned == null)
                 {
                     rows.BaggageReturned = DateTime.Now;
                 }
-                var releaseData = rows;
-                csvValues.Remove(releaseData);
-                csvValues.Add(releaseData);
-                File.Delete("bagdata.csv");
 
-                foreach(var item in ((List< BaggageGridModel>)dataGridView1.DataSource))
-                {
-                    CSV_Read_Write<BaggageGridModel>.WriteDataToCSV(item);
-                }
+                var releaseData = rows;
+
+                _gridService.UpdateValues(releaseData);
+
                 InitializeGrid();
-                var events = e;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var source = (IList<BaggageGridModel>)dataGridView1.DataSource;
-            dataGridView1.DataSource = source.Where(t => t.Name.ToLower().Contains(txtBox_Search.Text.ToLower())).ToList();
+            var source = (IList<BaggageGridModel>)dataGridView.DataSource;
+            dataGridView.DataSource = source.Where(t => t.Name.ToLower().Contains(txtBox_Search.Text.ToLower())).ToList();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -112,34 +106,12 @@ namespace GPBag
 
         private void Form_Load(object sender, EventArgs e)
         {
-           if(!File.Exists("bagdata.csv"))
-            {
-                File.Create("bagadata.csv");
-            }
-            if (!File.Exists("checkout.csv"))
-            {
-                File.Create("checkout.csv");
-            }
         }
 
         private void Checkout_Click(object sender, EventArgs e)
         {
-            var source = (List<BaggageGridModel>)dataGridView1.DataSource;
-            var checkoutList = source.Where(t => t.BaggageReturned != null).ToList();
-            dataGridView1.DataSource = source.Where(t => !t.BaggageReturned.HasValue).ToList();
-            var checkoutdata = CSV_Read_Write<BaggageGridModel>.ReadDataFromCSV("checkout.csv");
-            checkoutdata.AddRange(checkoutList);
-            File.Delete("checkout.csv");
-            foreach (var item in checkoutdata)
-            {
-                CSV_Read_Write<BaggageGridModel>.WriteDataToCSV(item, "checkout.csv");
-            }
-            File.Delete("bagdata.csv");
-
-            foreach(var item in (List<BaggageGridModel>)dataGridView1.DataSource)
-            { 
-                CSV_Read_Write<BaggageGridModel>.WriteDataToCSV(item);
-            }
+            _gridService.CheckoutCurrentBaggage();
+            InitializeGrid();
 
         }
 
@@ -152,14 +124,14 @@ namespace GPBag
         {
             groupBox1.Enabled = true;
             groupBox2.Enabled = false;
-            groupBox3.Enabled = false;
+            //groupBox3.Enabled = false;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             groupBox1.Enabled= false;
             groupBox2.Enabled = true;
-            groupBox3.Enabled = true;
+           // groupBox3.Enabled = true;
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -198,6 +170,11 @@ namespace GPBag
         }
 
         private void txt_Type_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }

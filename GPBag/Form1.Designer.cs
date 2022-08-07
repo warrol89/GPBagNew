@@ -41,9 +41,6 @@ namespace GPBag
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_No = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ReturnBaggage = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.PaidByCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Add = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
@@ -56,7 +53,6 @@ namespace GPBag
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -65,11 +61,13 @@ namespace GPBag
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.ReturnBaggage = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.PaidByCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_Name
@@ -86,7 +84,6 @@ namespace GPBag
             // 
             resources.ApplyResources(this.txt_PhNo, "txt_PhNo");
             this.txt_PhNo.Name = "txt_PhNo";
-            this.txt_PhNo.TextChanged += new System.EventHandler(this.txt_PhNo_TextChanged);
             // 
             // label2
             // 
@@ -119,29 +116,6 @@ namespace GPBag
             // 
             resources.ApplyResources(this.txt_No, "txt_No");
             this.txt_No.Name = "txt_No";
-            // 
-            // dataGridView1
-            // 
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ReturnBaggage,
-            this.PaidByCustomer});
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 41;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // ReturnBaggage
-            // 
-            this.ReturnBaggage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            resources.ApplyResources(this.ReturnBaggage, "ReturnBaggage");
-            this.ReturnBaggage.Name = "ReturnBaggage";
-            this.ReturnBaggage.Text = "Return";
-            this.ReturnBaggage.UseColumnTextForButtonValue = true;
-            // 
-            // PaidByCustomer
-            // 
-            resources.ApplyResources(this.PaidByCustomer, "PaidByCustomer");
-            this.PaidByCustomer.Name = "PaidByCustomer";
             // 
             // Add
             // 
@@ -236,13 +210,6 @@ namespace GPBag
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.dataGridView1);
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.button4);
@@ -304,29 +271,52 @@ namespace GPBag
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // dataGridView
+            // 
+            this.dataGridView.AllowUserToDeleteRows = false;
+            resources.ApplyResources(this.dataGridView, "dataGridView");
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ReturnBaggage,
+            this.PaidByCustomer});
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowTemplate.Height = 41;
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // ReturnBaggage
+            // 
+            this.ReturnBaggage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            resources.ApplyResources(this.ReturnBaggage, "ReturnBaggage");
+            this.ReturnBaggage.Name = "ReturnBaggage";
+            this.ReturnBaggage.Text = "Return";
+            this.ReturnBaggage.UseColumnTextForButtonValue = true;
+            // 
+            // PaidByCustomer
+            // 
+            resources.ApplyResources(this.PaidByCustomer, "PaidByCustomer");
+            this.PaidByCustomer.Name = "PaidByCustomer";
+            // 
             // Form
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.Checkout);
             this.Controls.Add(this.parentclock);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form";
             this.Load += new System.EventHandler(this.Form_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,20 +332,16 @@ namespace GPBag
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_No;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button Add;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtBox_Search;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridViewButtonColumn ReturnBaggage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PaidByCustomer;
         private Button Checkout;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private Label label6;
-        private GroupBox groupBox3;
         private GroupBox groupBox4;
         private Button button4;
         private Button button3;
@@ -366,6 +352,9 @@ namespace GPBag
         private Button button7;
         private TextBox txt_Type;
         private Label label7;
+        private DataGridView dataGridView;
+        private DataGridViewButtonColumn ReturnBaggage;
+        private DataGridViewTextBoxColumn PaidByCustomer;
     }
 }
 
