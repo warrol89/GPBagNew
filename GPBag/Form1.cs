@@ -178,5 +178,34 @@ namespace GPBag
         {
 
         }
+
+        private void DownloadExcel_Click(object sender, EventArgs e)
+        {
+            
+            var archiveDetails = _gridService.GetBaggageArchiveDetails();
+
+            using(SaveFileDialog dialog = new SaveFileDialog() { Filter="CSV|.csv",FileName="GpBagDetails"})
+            {
+                if(dialog.ShowDialog() == DialogResult.OK)
+                {
+                    using (StreamWriter sw = new StreamWriter(new FileStream(dialog.FileName, FileMode.Create), Encoding.UTF8))
+                    {
+                       
+                        StringBuilder sb = new StringBuilder();
+                        sb.AppendLine($"Id, Name,Baggage Received, Baggage Returned, Bag Size, BagType, Days, NoOfBoxes, Price, Rack No, RoomNo");
+
+                        foreach (var details in archiveDetails)
+                        {
+                            sb.AppendLine($"{details.Id},{details.Name},{details.BaggageReceived},{details.BaggageReturned},{details.Bagsize},{details.Bagtype},{details.CalculatedDays},{details.NoOfBoxes},{details.Price},{details.RackNo},{details.RoomNo}");
+                        }
+
+                        sw.WriteLine(sb.ToString());
+
+                        MessageBox.Show("File downloaded successfully");
+                    }
+
+                }
+            }
+        }
     }
 }

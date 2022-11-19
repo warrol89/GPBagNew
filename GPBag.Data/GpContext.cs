@@ -7,11 +7,23 @@ namespace GPBag.Data
 {
     public class GPContext: DbContext
     {
-         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        private string DbPath;
+        public GPContext()
         {
-
-            optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=Gpbag;trusted_connection=true;");
+            var folder = Environment.SpecialFolder.LocalApplicationData;
+            var path = Environment.GetFolderPath(folder);
+            DbPath = System.IO.Path.Join(path, "GpDb.db");
         }
+        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+
+        //    //optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=Gpbag;trusted_connection=true;");
+        //    //optionsBuilder.UseInMemoryDatabase(databaseName: "GpDB");
+        //    optionsBuilder.UseSqlite(DbPath);
+        //}
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+    => options.UseSqlite($"DataSource={DbPath}");
 
         public DbSet<BaggageGridModel> BaggageGridModel { get; set; }
         public DbSet<BaggageGridModelArchive> BaggageGridModelArchive { get; set; }

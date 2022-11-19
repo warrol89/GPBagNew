@@ -64,6 +64,9 @@ namespace GPBag
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.ReturnBaggage = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PaidByCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
+            this.sqliteCommand2 = new Microsoft.Data.Sqlite.SqliteCommand();
+            this.DownloadExcel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -295,11 +298,33 @@ namespace GPBag
             resources.ApplyResources(this.PaidByCustomer, "PaidByCustomer");
             this.PaidByCustomer.Name = "PaidByCustomer";
             // 
+            // sqliteCommand1
+            // 
+            this.sqliteCommand1.CommandTimeout = 30;
+            this.sqliteCommand1.Connection = null;
+            this.sqliteCommand1.Transaction = null;
+            this.sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
+            // 
+            // sqliteCommand2
+            // 
+            this.sqliteCommand2.CommandTimeout = 30;
+            this.sqliteCommand2.Connection = null;
+            this.sqliteCommand2.Transaction = null;
+            this.sqliteCommand2.UpdatedRowSource = System.Data.UpdateRowSource.None;
+            // 
+            // DownloadExcel
+            // 
+            resources.ApplyResources(this.DownloadExcel, "DownloadExcel");
+            this.DownloadExcel.Name = "DownloadExcel";
+            this.DownloadExcel.UseVisualStyleBackColor = true;
+            this.DownloadExcel.Click += new System.EventHandler(this.DownloadExcel_Click);
+            // 
             // Form
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.Controls.Add(this.DownloadExcel);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.Checkout);
@@ -355,6 +380,9 @@ namespace GPBag
         private DataGridView dataGridView;
         private DataGridViewButtonColumn ReturnBaggage;
         private DataGridViewTextBoxColumn PaidByCustomer;
+        private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
+        private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand2;
+        private Button DownloadExcel;
     }
 }
 

@@ -20,6 +20,11 @@ namespace GpBag.Service
            return context.BaggageGridModel.ToList();
         }
 
+        public List<BaggageGridModelArchive> GetBaggageArchiveDetails()
+        {
+            return context.BaggageGridModelArchive.ToList();
+        }
+
         public bool AddBaggageDetails(BaggageGridModel baggageDetails)
         {
              context.Add(baggageDetails);
