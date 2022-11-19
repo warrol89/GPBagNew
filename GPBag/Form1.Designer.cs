@@ -67,6 +67,7 @@ namespace GPBag
             this.sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
             this.sqliteCommand2 = new Microsoft.Data.Sqlite.SqliteCommand();
             this.DownloadExcel = new System.Windows.Forms.Button();
+            this.Upload = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -319,11 +320,19 @@ namespace GPBag
             this.DownloadExcel.UseVisualStyleBackColor = true;
             this.DownloadExcel.Click += new System.EventHandler(this.DownloadExcel_Click);
             // 
+            // Upload
+            // 
+            resources.ApplyResources(this.Upload, "Upload");
+            this.Upload.Name = "Upload";
+            this.Upload.UseVisualStyleBackColor = true;
+            this.Upload.Click += new System.EventHandler(this.Upload_Click);
+            // 
             // Form
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.Controls.Add(this.Upload);
             this.Controls.Add(this.DownloadExcel);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.button7);
@@ -383,6 +392,7 @@ namespace GPBag
         private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
         private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand2;
         private Button DownloadExcel;
+        private Button Upload;
     }
 }
 

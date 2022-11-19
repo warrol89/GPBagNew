@@ -12,6 +12,7 @@ using System.IO;
 using System.Windows.Forms;
 using GPBag.Data.Models;
 using GpBag.Service;
+using System.Collections;
 
 namespace GPBag
 {
@@ -69,14 +70,14 @@ namespace GPBag
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-         {
+        {
             var senderGrid = (DataGridView)sender;
             var clickedColumn = senderGrid.Columns[e.ColumnIndex];
 
             if (clickedColumn is DataGridViewButtonColumn &&
                 e.RowIndex >= 0 && e.ColumnIndex == 0)
             {
-              
+
                 BaggageGridModel rows = (BaggageGridModel)((DataGridView)sender).Rows[e.RowIndex].DataBoundItem;
 
                 if (rows.BaggageReturned == null)
@@ -129,9 +130,9 @@ namespace GPBag
 
         private void button4_Click(object sender, EventArgs e)
         {
-            groupBox1.Enabled= false;
+            groupBox1.Enabled = false;
             groupBox2.Enabled = true;
-           // groupBox3.Enabled = true;
+            // groupBox3.Enabled = true;
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -143,8 +144,8 @@ namespace GPBag
         {
             parentclock.Enabled = true;
             timer1.Enabled = true;
-            parentclock.Text=Convert.ToString(DateTime.Now);
-                    }
+            parentclock.Text = Convert.ToString(DateTime.Now);
+        }
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -181,16 +182,16 @@ namespace GPBag
 
         private void DownloadExcel_Click(object sender, EventArgs e)
         {
-            
+
             var archiveDetails = _gridService.GetBaggageArchiveDetails();
 
-            using(SaveFileDialog dialog = new SaveFileDialog() { Filter="CSV|.csv",FileName="GpBagDetails"})
+            using (SaveFileDialog dialog = new SaveFileDialog() { Filter = "CSV|.csv", FileName = "GpBagDetails" })
             {
-                if(dialog.ShowDialog() == DialogResult.OK)
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     using (StreamWriter sw = new StreamWriter(new FileStream(dialog.FileName, FileMode.Create), Encoding.UTF8))
                     {
-                       
+
                         StringBuilder sb = new StringBuilder();
                         sb.AppendLine($"Id, Name,Baggage Received, Baggage Returned, Bag Size, BagType, Days, NoOfBoxes, Price, Rack No, RoomNo");
 
@@ -206,6 +207,51 @@ namespace GPBag
 
                 }
             }
+        }
+
+        private void Upload_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dialog = new OpenFileDialog())
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    string path = System.IO.Path.GetFullPath(dialog.FileName);
+                    if (File.Exists(path))
+                    {
+
+                        var valuesFromCSV = File.ReadAllLines(path);
+
+                            foreach(var value in valuesFromCSV.Skip(1).Where(t=>!string.IsNullOrEmpty(t)))
+                        {
+                            _gridService.AddBaggageDetails(GetValuesFromCSV(value));
+                        }
+                        InitializeGrid();
+                        MessageBox.Show("Data uploaded successfully");
+
+                    }
+                }
+            }
+        }
+        
+
+        private BaggageGridModel GetValuesFromCSV(string value)
+        {
+            var model = value.Split(",");
+            BaggageGridModel gridValue = new BaggageGridModel();
+            gridValue.Name = model[1];
+            gridValue.BaggageReceived = Convert.ToDateTime(model[2]);
+            gridValue.BaggageReturned = Convert.ToDateTime(model[3]);
+            gridValue.Bagsize = model[4];
+            gridValue.Bagtype = model[5];
+            Int32.TryParse(model[7], out int result);
+            gridValue.NoOfBoxes = result;
+            
+            gridValue.RackNo = model[9];
+            gridValue.RoomNo = model[10];
+
+
+            return gridValue;
+
         }
     }
 }
