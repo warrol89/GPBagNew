@@ -60,7 +60,8 @@ namespace GPBag
                 Bagtype = txt_Type.Text,
                 NoOfBoxes = Convert.ToInt32(txt_No.Text),
                 RackNo = txt_PhNo.Text,
-                BaggageReceived = dateTimePicker1.Value
+                BaggageReceived = dateTimePicker1.Value,
+
             };
             _gridService.AddBaggageDetails(valueToBeAdded);
             var values = _gridService.GetBaggageDetails();
@@ -252,6 +253,31 @@ namespace GPBag
 
             return gridValue;
 
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            string[] extensions = new string[] { ".jpg", ".jpeg", ".png" };
+            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if (File.Exists(openFileDialog1.FileName))
+                {
+                    if(!extensions.Contains(Path.GetExtension(openFileDialog1.FileName).ToLower()))
+                    {
+                        MessageBox.Show("Please upload valid image type");
+                    }
+                    else
+                    {
+                        label9.Text = openFileDialog1.FileName;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("File not valid");
+                }
+                
+
+            }
         }
     }
 }

@@ -49,6 +49,8 @@ namespace GPBag
             this.button2 = new System.Windows.Forms.Button();
             this.Checkout = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.txt_Type = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -68,6 +70,8 @@ namespace GPBag
             this.sqliteCommand2 = new Microsoft.Data.Sqlite.SqliteCommand();
             this.DownloadExcel = new System.Windows.Forms.Button();
             this.Upload = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -171,6 +175,9 @@ namespace GPBag
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.button8);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txt_Type);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label1);
@@ -187,6 +194,18 @@ namespace GPBag
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // button8
+            // 
+            resources.ApplyResources(this.button8, "button8");
+            this.button8.Name = "button8";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
             // 
             // txt_Type
             // 
@@ -327,6 +346,15 @@ namespace GPBag
             this.Upload.UseVisualStyleBackColor = true;
             this.Upload.Click += new System.EventHandler(this.Upload_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
             // Form
             // 
             resources.ApplyResources(this, "$this");
@@ -393,6 +421,10 @@ namespace GPBag
         private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand2;
         private Button DownloadExcel;
         private Button Upload;
+        private Label label8;
+        private OpenFileDialog openFileDialog1;
+        private Button button8;
+        private Label label9;
     }
 }
 
