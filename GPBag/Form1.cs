@@ -38,6 +38,7 @@ namespace GPBag
             dataGridView.ColumnHeadersHeight = 50;
             decimal width = dataGridView.Width / dataGridView.ColumnCount;
             var columns = dataGridView.ColumnCount;
+            var rows = dataGridView.RowCount;
             for (var i = 0; i < columns; i++)
             {
                 dataGridView.Columns[i].Width = (int)Math.Floor(width);
@@ -49,10 +50,45 @@ namespace GPBag
             dataGridView.Columns["Price"].ReadOnly = true;
             dataGridView.Columns["Price"].HeaderText = "Price to be paid";
             dataGridView.Columns["Id"].Visible = false;
+            dataGridView.Columns["ImageName"].Visible = true;
+            ((DataGridViewImageColumn)dataGridView.Columns["BagImage"]).ImageLayout = DataGridViewImageCellLayout.Stretch;
+            //DataGridViewImageColumn imageCol = new DataGridViewImageColumn() { HeaderText="Bag Image",Name="BagImage2"};
+            //dataGridView.Columns.Add(imageCol);
+
+            for (var i = 0; i < rows; i++)
+            {
+
+                if (File.Exists(baggaageDetails[i].ImageName))
+                {
+                    Image imageFile = Image.FromFile(baggaageDetails[i].ImageName);
+                   // Image imageFile = Image.FromFile(@"C:\DTH.PNG");
+                    ((DataGridViewImageCell)dataGridView["BagImage", i]).Value = imageFile;
+                }
+            }
+
+
+        }
+
+        private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if ((dataGridView.Columns[(e).ColumnIndex].Name == "BagImage"))
+            {
+                // Your code would go here - below is just the code I used to test 
+               // (e).Value = Image.FromFile(@"C:\DTH.PNG");
+
+            }
         }
 
         private void Add_Click(object sender, EventArgs e)
         {
+
+            string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\BagImages\"; 
+            if (Directory.Exists(appPath) == false)                                              
+            {                                                                                    
+                Directory.CreateDirectory(appPath);                                              
+            }
+            var dest = appPath + $"{txt_Name.Text}_{Guid.NewGuid()}.jpg";
+            File.Copy(label9.Text, dest);
             var valueToBeAdded = new BaggageGridModel
             {
                 Bagsize = cmb_Size.SelectedItem.ToString(),
@@ -61,7 +97,7 @@ namespace GPBag
                 NoOfBoxes = Convert.ToInt32(txt_No.Text),
                 RackNo = txt_PhNo.Text,
                 BaggageReceived = dateTimePicker1.Value,
-
+                ImageName = dest
             };
             _gridService.AddBaggageDetails(valueToBeAdded);
             var values = _gridService.GetBaggageDetails();
@@ -91,7 +127,22 @@ namespace GPBag
                 _gridService.UpdateValues(releaseData);
 
                 InitializeGrid();
+                return;
             }
+            if(clickedColumn is DataGridViewImageColumn &&
+                e.RowIndex >= 0 && e.ColumnIndex == 2)
+            {
+                BaggageGridModel rows = (BaggageGridModel)((DataGridView)sender).Rows[e.RowIndex].DataBoundItem;
+                pictureBox1.Image = null;
+                if (File.Exists(rows.ImageName))
+                {
+                    var file = Image.FromFile(rows.ImageName);
+                    pictureBox1.Image = file;
+                    pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+                }
+    
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -278,6 +329,11 @@ namespace GPBag
                 
 
             }
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -57,7 +57,7 @@ namespace GPBag.Data.Models
         public string RoomNo { get; set; }
         public DateTime? BaggageReceived { get; set; }
         public DateTime? BaggageReturned { get; set; }
-
+        public string ImageName { get; set; }
         private double CalculateValue(StorageRate rateDetails, double days)
         {
             if (days >= 1 && days <= 7)

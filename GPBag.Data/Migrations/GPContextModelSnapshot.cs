@@ -34,6 +34,9 @@ namespace GPBag.Data.Migrations
                     b.Property<string>("Bagtype")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("ImageName")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 

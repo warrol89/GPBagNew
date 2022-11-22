@@ -49,6 +49,7 @@ namespace GPBag
             this.button2 = new System.Windows.Forms.Button();
             this.Checkout = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.txt_Type = new System.Windows.Forms.TextBox();
@@ -66,16 +67,18 @@ namespace GPBag
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.ReturnBaggage = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PaidByCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BagImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
             this.sqliteCommand2 = new Microsoft.Data.Sqlite.SqliteCommand();
             this.DownloadExcel = new System.Windows.Forms.Button();
             this.Upload = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label9 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_Name
@@ -195,6 +198,11 @@ namespace GPBag
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
             // button8
             // 
             resources.ApplyResources(this.button8, "button8");
@@ -300,7 +308,8 @@ namespace GPBag
             resources.ApplyResources(this.dataGridView, "dataGridView");
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ReturnBaggage,
-            this.PaidByCustomer});
+            this.PaidByCustomer,
+            this.BagImage});
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowTemplate.Height = 41;
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -317,6 +326,11 @@ namespace GPBag
             // 
             resources.ApplyResources(this.PaidByCustomer, "PaidByCustomer");
             this.PaidByCustomer.Name = "PaidByCustomer";
+            // 
+            // BagImage
+            // 
+            resources.ApplyResources(this.BagImage, "BagImage");
+            this.BagImage.Name = "BagImage";
             // 
             // sqliteCommand1
             // 
@@ -350,16 +364,19 @@ namespace GPBag
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // label9
+            // pictureBox1
             // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
             // Form
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Upload);
             this.Controls.Add(this.DownloadExcel);
             this.Controls.Add(this.dataGridView);
@@ -379,6 +396,7 @@ namespace GPBag
             this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -425,6 +443,8 @@ namespace GPBag
         private OpenFileDialog openFileDialog1;
         private Button button8;
         private Label label9;
+        private DataGridViewImageColumn BagImage;
+        private PictureBox pictureBox1;
     }
 }
 

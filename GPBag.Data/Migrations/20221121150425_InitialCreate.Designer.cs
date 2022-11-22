@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GPBag.Data.Migrations
 {
     [DbContext(typeof(GPContext))]
-    [Migration("20221119195016_InitialCreate")]
+    [Migration("20221121150425_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,6 +34,9 @@ namespace GPBag.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Bagtype")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ImageName")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")

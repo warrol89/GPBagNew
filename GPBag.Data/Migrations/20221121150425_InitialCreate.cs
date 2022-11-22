@@ -20,7 +20,8 @@ namespace GPBag.Data.Migrations
                     NoOfBoxes = table.Column<int>(type: "INTEGER", nullable: false),
                     RoomNo = table.Column<string>(type: "TEXT", nullable: true),
                     BaggageReceived = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    BaggageReturned = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    BaggageReturned = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    ImageName = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
