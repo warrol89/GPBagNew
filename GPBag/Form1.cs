@@ -88,7 +88,7 @@ namespace GPBag
                 Directory.CreateDirectory(appPath);                                              
             }
             var dest = appPath + $"{txt_Name.Text}_{Guid.NewGuid()}.jpg";
-            File.Copy(label9.Text, dest);
+            if (!string.IsNullOrEmpty(label9.Text)) { File.Copy(label9.Text, dest); }
             var valueToBeAdded = new BaggageGridModel
             {
                 Bagsize = cmb_Size.SelectedItem.ToString(),
@@ -291,8 +291,10 @@ namespace GPBag
             var model = value.Split(",");
             BaggageGridModel gridValue = new BaggageGridModel();
             gridValue.Name = model[1];
-            gridValue.BaggageReceived = Convert.ToDateTime(model[2]);
-            gridValue.BaggageReturned = Convert.ToDateTime(model[3]);
+            DateTime.TryParse(model[2], out DateTime receivedDate);
+            gridValue.BaggageReceived = receivedDate;
+            DateTime.TryParse(model[3], out DateTime returnedDate);
+            gridValue.BaggageReturned = returnedDate == DateTime.MinValue ? null : returnedDate ;
             gridValue.Bagsize = model[4];
             gridValue.Bagtype = model[5];
             Int32.TryParse(model[7], out int result);
