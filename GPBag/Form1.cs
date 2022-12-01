@@ -69,6 +69,26 @@ namespace GPBag
 
         }
 
+        private void ResetGrid()
+        {
+            txt_Name.ResetText();
+            txt_Type.ResetText();
+            txt_No.ResetText();
+            txt_PhNo.ResetText();
+            label9.ResetText();
+            dateTimePicker1.ResetText();
+        }
+
+        public void ResetAllControls(Control form)
+        {
+            cmb_Size.ResetText();
+            txt_Name.ResetText();
+            txt_Type.ResetText();
+            txt_No.ResetText();
+            txt_PhNo.ResetText();
+            dateTimePicker1.ResetText();
+        }
+
         private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if ((dataGridView.Columns[(e).ColumnIndex].Name == "BagImage"))
@@ -103,7 +123,8 @@ namespace GPBag
             var values = _gridService.GetBaggageDetails();
 
             dataGridView.DataSource = values;
-
+            ResetAllControls(this);
+          
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -127,6 +148,8 @@ namespace GPBag
                 _gridService.UpdateValues(releaseData);
 
                 InitializeGrid();
+                
+              
                 return;
             }
             if(clickedColumn is DataGridViewImageColumn &&
