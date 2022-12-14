@@ -28,13 +28,14 @@ namespace GPBag.Data.Models
             get
             {
                 double value = 0;
-                if (this.CalculatedDays == 0) { return 0; }
+               
                 if(this.Bagsize == "Guest")
                 {
                    // Math.DivRem((int)CalculatedDays, 7, out int price);
-                    return (((int)CalculatedDays / 7) * 10)+10;
+                    return ((((int)CalculatedDays / 7) * 10)+10)* NoOfBoxes;
                 }
 
+                if (this.CalculatedDays == 0) { return 0; }
                 value = this.CalculateValue(rate.Where(t => t.Size.ToLower() == this.Bagsize.ToLower()).FirstOrDefault(), CalculatedDays);
 
                 return value * NoOfBoxes;
