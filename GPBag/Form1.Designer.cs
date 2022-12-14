@@ -109,7 +109,8 @@ namespace GPBag
             resources.GetString("cmb_Size.Items"),
             resources.GetString("cmb_Size.Items1"),
             resources.GetString("cmb_Size.Items2"),
-            resources.GetString("cmb_Size.Items3")});
+            resources.GetString("cmb_Size.Items3"),
+            resources.GetString("cmb_Size.Items4")});
             resources.ApplyResources(this.cmb_Size, "cmb_Size");
             this.cmb_Size.Name = "cmb_Size";
             // 
